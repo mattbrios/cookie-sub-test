@@ -139,7 +139,7 @@ export default function Home() {
               <div>
                 <h4>Cookies criados:</h4>
                 {Object.keys(myCookies).map((cookie, index) => (
-                  <p key={`cookie${index}`}>{myCookies[cookie]}</p>
+                  <p key={`cookie${index}`}>{`${cookie}: ${myCookies[cookie]}`}</p>
                 ))}
               </div>
               <hr style={{ width: 200 }} />
