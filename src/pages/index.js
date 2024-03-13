@@ -104,10 +104,10 @@ export default function Home() {
     setCookie(undefined, 'cookie_custom_strict', '', { maxAge: -999999999, path:'/' });
     setCookie(undefined, 'cookie_custom', '', { maxAge: -999999999, path:'/' });
 
-    setCookie(undefined, 'cookie_env_lax', '', { maxAge: -999999999, path:'/' });
-    setCookie(undefined, 'cookie_env_none', '', { maxAge: -999999999, path:'/' });
-    setCookie(undefined, 'cookie_env_strict', '', { maxAge: -999999999, path:'/' });
-    setCookie(undefined, 'cookie_env', '', { maxAge: -999999999, path:'/' });
+    setCookie(undefined, 'cookie_env_lax', '', { maxAge: -999999999, path:'/', domain: domainForCookie(process.env.NEXT_PUBLIC_APP_URL) });
+    setCookie(undefined, 'cookie_env_none', '', { maxAge: -999999999, path:'/', domain: domainForCookie(process.env.NEXT_PUBLIC_APP_URL) });
+    setCookie(undefined, 'cookie_env_strict', '', { maxAge: -999999999, path:'/', domain: domainForCookie(process.env.NEXT_PUBLIC_APP_URL) });
+    setCookie(undefined, 'cookie_env', '', { maxAge: -999999999, path:'/', domain: domainForCookie(process.env.NEXT_PUBLIC_APP_URL) });
 
     setCookie(undefined, 'cookie_default_lax', '', { maxAge: -999999999, path:'/' });
     setCookie(undefined, 'cookie_default_none', '', { maxAge: -999999999, path:'/' });
