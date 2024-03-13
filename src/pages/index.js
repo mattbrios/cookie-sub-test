@@ -16,7 +16,7 @@ export default function Home() {
 
 
   const domainForCookie = (domain) => {
-    const domainParts = String(domain).split('://')[1].split(':')[0].split('.');
+    const domainParts = String(domain).split('://')[1].split('/')[0].split(':')[0].split('.');
     const dividers = domainParts.length;
     const arrGlobalDomain = domainParts.slice(Math.max(dividers - (dividers - 1), 0));
     return arrGlobalDomain.join('.');
