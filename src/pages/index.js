@@ -1,19 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import Head from 'next/head'
 import { parseCookies, setCookie } from 'nookies';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export default function Home() {
   const cookies = parseCookies();
   const [ myCookies, setMyCookies ] = useState(cookies);
-  useEffect(() => {
-    let mounted = true;
-    if(mounted) {
-      console.log('to aqui')
-    }
-    return () => mounted = false;
-  }, [myCookies]);
-
 
   const domainForCookie = (domain) => {
     const domainParts = String(domain).split('://')[1].split('/')[0].split(':')[0].split('.');
@@ -52,25 +44,25 @@ export default function Home() {
     setCookie(undefined, 'cookie_env_lax', 'content_env_lax', {
       maxAge: 30 * 24 * 60 * 60, //30 days
       path: '/',
-      domain: domainForCookie(process.env.NEXT_PUBLIC_APP_URL),
+      domain: process.env.NEXT_PUBLIC_COOKIE_DOMAIN,
       sameSite: 'lax'
     });
     setCookie(undefined, 'cookie_env_none', 'content_env_none', {
       maxAge: 30 * 24 * 60 * 60, //30 days
       path: '/',
-      domain: domainForCookie(process.env.NEXT_PUBLIC_APP_URL),
+      domain: process.env.NEXT_PUBLIC_COOKIE_DOMAIN,
       sameSite: 'none'
     });
     setCookie(undefined, 'cookie_env_strict', 'content_env_strict', {
       maxAge: 30 * 24 * 60 * 60, //30 days
       path: '/',
-      domain: domainForCookie(process.env.NEXT_PUBLIC_APP_URL),
+      domain: process.env.NEXT_PUBLIC_COOKIE_DOMAIN,
       sameSite: 'strict'
     });
     setCookie(undefined, 'cookie_env', 'content_env', {
       maxAge: 30 * 24 * 60 * 60, //30 days
       path: '/',
-      domain: domainForCookie(process.env.NEXT_PUBLIC_APP_URL)
+      domain: process.env.NEXT_PUBLIC_COOKIE_DOMAIN
     });
 
 
@@ -104,10 +96,10 @@ export default function Home() {
     setCookie(undefined, 'cookie_custom_strict', '', { maxAge: -999999999, path:'/', domain: domainForCookie(window.location.href), });
     setCookie(undefined, 'cookie_custom', '', { maxAge: -999999999, path:'/', domain: domainForCookie(window.location.href), });
 
-    setCookie(undefined, 'cookie_env_lax', '', { maxAge: -999999999, path:'/', domain: domainForCookie(process.env.NEXT_PUBLIC_APP_URL) });
-    setCookie(undefined, 'cookie_env_none', '', { maxAge: -999999999, path:'/', domain: domainForCookie(process.env.NEXT_PUBLIC_APP_URL) });
-    setCookie(undefined, 'cookie_env_strict', '', { maxAge: -999999999, path:'/', domain: domainForCookie(process.env.NEXT_PUBLIC_APP_URL) });
-    setCookie(undefined, 'cookie_env', '', { maxAge: -999999999, path:'/', domain: domainForCookie(process.env.NEXT_PUBLIC_APP_URL) });
+    setCookie(undefined, 'cookie_env_lax', '', { maxAge: -999999999, path:'/', domain: process.env.NEXT_PUBLIC_COOKIE_DOMAIN });
+    setCookie(undefined, 'cookie_env_none', '', { maxAge: -999999999, path:'/', domain: process.env.NEXT_PUBLIC_COOKIE_DOMAIN });
+    setCookie(undefined, 'cookie_env_strict', '', { maxAge: -999999999, path:'/', domain: process.env.NEXT_PUBLIC_COOKIE_DOMAIN });
+    setCookie(undefined, 'cookie_env', '', { maxAge: -999999999, path:'/', domain: process.env.NEXT_PUBLIC_COOKIE_DOMAIN });
 
     setCookie(undefined, 'cookie_default_lax', '', { maxAge: -999999999, path:'/' });
     setCookie(undefined, 'cookie_default_none', '', { maxAge: -999999999, path:'/' });
@@ -131,7 +123,7 @@ export default function Home() {
             {typeof window !== "undefined" && (
               <p>Custom: {domainForCookie(window.location.href)}</p>
             )}
-            <p>ENV: {domainForCookie(process.env.NEXT_PUBLIC_APP_URL)}</p>
+            <p>ENV: {process.env.NEXT_PUBLIC_COOKIE_DOMAIN}</p>
           </div>
           <hr style={{ width: 200 }} />
           {(myCookies && Object.keys(myCookies).length > 0) && (
