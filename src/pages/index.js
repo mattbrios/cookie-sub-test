@@ -99,10 +99,10 @@ export default function Home() {
   }
 
   const removeCookies = () => {
-    setCookie(undefined, 'cookie_custom_lax', '', { maxAge: -999999999, path:'/' });
-    setCookie(undefined, 'cookie_custom_none', '', { maxAge: -999999999, path:'/' });
-    setCookie(undefined, 'cookie_custom_strict', '', { maxAge: -999999999, path:'/' });
-    setCookie(undefined, 'cookie_custom', '', { maxAge: -999999999, path:'/' });
+    setCookie(undefined, 'cookie_custom_lax', '', { maxAge: -999999999, path:'/', domain: domainForCookie(window.location.href), });
+    setCookie(undefined, 'cookie_custom_none', '', { maxAge: -999999999, path:'/', domain: domainForCookie(window.location.href), });
+    setCookie(undefined, 'cookie_custom_strict', '', { maxAge: -999999999, path:'/', domain: domainForCookie(window.location.href), });
+    setCookie(undefined, 'cookie_custom', '', { maxAge: -999999999, path:'/', domain: domainForCookie(window.location.href), });
 
     setCookie(undefined, 'cookie_env_lax', '', { maxAge: -999999999, path:'/', domain: domainForCookie(process.env.NEXT_PUBLIC_APP_URL) });
     setCookie(undefined, 'cookie_env_none', '', { maxAge: -999999999, path:'/', domain: domainForCookie(process.env.NEXT_PUBLIC_APP_URL) });
